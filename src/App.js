@@ -22,11 +22,22 @@ class App extends React.Component {
             <SidebarComponent
                 selectedNoteIndex={this.state.selectedNoteIndex}
                 notes={this.state.notes}
+                deleteNote={this.deleteNote}
+                selectNote={this.selectNote}
+                newNote={this.newNote}
             ></SidebarComponent>
             <EditorComponent></EditorComponent>
         </div>
     );
   }
+
+    selectNote = (n, i) => {
+        this.setState({selectedNoteIndex: i, selectedNote: n});
+    };
+
+    deleteNote = (note) => {
+        console.log('TestDN');
+    };
 
   componentDidMount = () => {
     firebase
@@ -38,7 +49,6 @@ class App extends React.Component {
             data['id'] = _doc.id;
             return data;
           });
-          console.log(notes);
           this.setState({notes: notes});
         });
   }
