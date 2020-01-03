@@ -41,7 +41,7 @@ class SidebarComponent extends React.Component {
                                 </input>
                                 <Button
                                     className={classes.newNoteSubmitBtn}
-                                    onClick={this.newNote}
+                                    onClick={(e) => this.newNote(this.state.title)}
                                 >
                                     Submit Note
                                 </Button>
@@ -76,8 +76,8 @@ class SidebarComponent extends React.Component {
         }
     }
 
-    newNote = () => {
-        console.log(this.state);
+    newNote = (title) => {
+        this.props.newNote(title);
     };
 
     selectNote = (n, i) => {
